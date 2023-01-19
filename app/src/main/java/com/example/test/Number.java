@@ -21,4 +21,12 @@ public class Number {
     public boolean isLuhn() {
         return luhn;
     }
+
+    @Override
+    public String toString() {
+        return "Number{" +
+                "length=" + length +
+                ", luhn=" + luhn +
+                '}';
+    }
 }

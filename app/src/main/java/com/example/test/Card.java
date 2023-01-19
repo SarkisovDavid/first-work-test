@@ -56,4 +56,17 @@ public class Card {
     public Number getNumber() {
         return number;
     }
+
+    @Override
+    public String toString() {
+        return "Card{" +
+                "scheme='" + scheme + '\'' +
+                ", type='" + type + '\'' +
+                ", brand='" + brand + '\'' +
+                ", prepaid=" + prepaid +
+                ", bank=" + bank +
+                ", country=" + country +
+                ", number=" + number +
+                '}';
+    }
 }

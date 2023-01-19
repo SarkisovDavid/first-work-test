@@ -35,4 +35,14 @@ public class Bank {
     public String getCity() {
         return city;
     }
+
+    @Override
+    public String toString() {
+        return "Bank{" +
+                "name='" + name + '\'' +
+                ", url='" + url + '\'' +
+                ", phone='" + phone + '\'' +
+                ", city='" + city + '\'' +
+                '}';
+    }
 }

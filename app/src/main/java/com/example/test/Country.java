@@ -56,4 +56,17 @@ public class Country {
     public int getLongitude() {
         return longitude;
     }
+
+    @Override
+    public String toString() {
+        return "Country{" +
+                "numeric=" + numeric +
+                ", alpha2='" + alpha2 + '\'' +
+                ", name='" + name + '\'' +
+                ", emoji='" + emoji + '\'' +
+                ", currency='" + currency + '\'' +
+                ", latitude=" + latitude +
+                ", longitude=" + longitude +
+                '}';
+    }
 }
