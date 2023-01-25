@@ -33,21 +33,14 @@ public class MainViewModel extends AndroidViewModel {
     }
 
     public void loadCardInfo() {
-       Disposable disposable = ApiFactory.apiService.cardInfo()
+        Disposable disposable = ApiFactory.apiService.cardInfo()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<Card>() {
-                    @Override
-                    public void accept(Card card) throws Throwable {
-                        cardMutableLiveData.setValue(card.toString());
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) throws Throwable {
-                        Log.d("MainActivity", throwable.toString());
-                    }
-                });
-       compositeDisposable.add(disposable);
+                .subscribe(
+                        card -> cardMutableLiveData.setValue(card.toString()),
+                        throwable -> Log.d("MainActivity", throwable.toString())
+                );
+        compositeDisposable.add(disposable);
     }
 
     @Override

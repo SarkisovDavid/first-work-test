@@ -9,5 +9,4 @@ public interface ApiService {
     @GET("45717360")
     Single<Card> cardInfo();
 
-//    @Query("") String cardNumber
 }
