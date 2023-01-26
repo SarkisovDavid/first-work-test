@@ -8,19 +8,18 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import java.nio.charset.StandardCharsets;
-import java.util.List;
+import java.util.Map;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.disposables.Disposable;
-import io.reactivex.rxjava3.functions.Consumer;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class MainViewModel extends AndroidViewModel {
 
+    private final ConverterMAP mConverterMAP = new ConverterMAP();
     private static final String TAG = "MainViewModel";
-    private final MutableLiveData<String> cardMutableLiveData = new MutableLiveData<>();
+    private final MutableLiveData<Map<String, String>> cardMutableLiveData = new MutableLiveData<>();
     private final CompositeDisposable compositeDisposable = new CompositeDisposable();
 
 
@@ -28,7 +27,7 @@ public class MainViewModel extends AndroidViewModel {
         super(application);
     }
 
-    public MutableLiveData<String> getCardMutableLiveData() {
+    public LiveData<Map<String, String>> getCardMutableLiveData() {
         return cardMutableLiveData;
     }
 
@@ -37,7 +36,7 @@ public class MainViewModel extends AndroidViewModel {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                        card -> cardMutableLiveData.setValue(card.toString()),
+                        card -> cardMutableLiveData.setValue(mConverterMAP.convert(card)),
                         throwable -> Log.d("MainActivity", throwable.toString())
                 );
         compositeDisposable.add(disposable);
