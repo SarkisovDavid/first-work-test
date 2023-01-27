@@ -20,17 +20,18 @@ public class ConverterMAP {
     }
 
     private String countryInfo(Card card) {
-        String cardCountryInfo = null;
+        String cardCountryInfo;
         if (card.getCountry().getAlpha2() != null && card.getCountry().getName() != null) {
             cardCountryInfo = card.getCountry().getAlpha2() + " " + card.getCountry().getName();
-        } else if (card.getCountry().getAlpha2() == null && card.getCountry().getName() != null) {
-            cardCountryInfo = card.getCountry().getName();
-        } else if (card.getCountry().getAlpha2() != null && card.getCountry().getName() == null) {
-            cardCountryInfo = card.getCountry().getAlpha2();
         } else if (card.getCountry().getAlpha2() == null && card.getCountry().getName() == null) {
+            cardCountryInfo = card.getCountry().getName();
+        } else if (card.getCountry().getAlpha2() != null) {
+            cardCountryInfo = card.getCountry().getAlpha2();
+        } else {
             cardCountryInfo = "";
         }
         return cardCountryInfo;
+
     }
 }
 
