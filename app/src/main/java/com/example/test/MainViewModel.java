@@ -1,6 +1,7 @@
 package com.example.test;
 
 import android.app.Application;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -52,14 +53,19 @@ public class MainViewModel extends AndroidViewModel {
                 .filter(new Predicate<Map.Entry<String, String>>() {
                     @Override
                     public boolean test(Map.Entry<String, String> stringStringEntry) {
-                        return false;
+                        String value = stringStringEntry.getValue();
+                        if (value != null || value.isEmpty()) {
+                            return true;
+                        } else {
+                            return false;
+                        }
                     }
                 })
                 .observeOn(AndroidSchedulers.mainThread())
-                // .subscribe(
-                //         cardInfoItems -> Log.d("MainViewModel", cardInfoItems.getValue()),
-                //         throwable -> Log.d("MainActivity", throwable.toString())
-                // );
+                .subscribe(
+                        cardInfoItems -> Log.d("MainViewModel", cardInfoItems.getKey() + ' ' + cardInfoItems.getValue()),
+                        throwable -> Log.d("MainActivity", throwable.toString())
+                );
         compositeDisposable.add(disposable);
     }
 
