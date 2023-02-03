@@ -5,11 +5,12 @@ import java.util.Map;
 
 public class ConverterMAP {
 
+    private final Map<String, String> myHashMap = new HashMap<>();
+
     public Map<String, String> convert(Card card) {
 
-        Map<String, String> myHashMap = new HashMap<>();
-
-        myHashMap.put("scheme", card.getScheme());
+        if(card.getScheme() != null && !card.getScheme().isEmpty()) {
+        myHashMap.put("scheme", card.getScheme());}
         myHashMap.put("type", card.getType());
         myHashMap.put("brand", card.getBrand());
         myHashMap.put("prepaid", Boolean.toString(card.isPrepaid()));
@@ -31,7 +32,7 @@ public class ConverterMAP {
             cardCountryInfo = "";
         }
         return cardCountryInfo;
-
     }
+
 }
 
