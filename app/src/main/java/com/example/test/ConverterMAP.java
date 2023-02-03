@@ -10,13 +10,13 @@ public class ConverterMAP {
     public Map<String, String> convert(Card card) {
 
         if(card.getScheme() != null && !card.getScheme().isEmpty()) {
-        myHashMap.put("Scheme:", card.getScheme());}
-        myHashMap.put("Type:", card.getType());
-        myHashMap.put("Brand:", card.getBrand());
-        myHashMap.put("Prepaid:", Boolean.toString(card.isPrepaid()));
-        myHashMap.put("Bank:", card.getBank().toString());
-        myHashMap.put("Country:", countryInfo(card));
-        myHashMap.put("Number:", card.getNumber().toString());
+        myHashMap.put("Scheme", card.getScheme());}
+        myHashMap.put("Type", card.getType());
+        myHashMap.put("Brand", card.getBrand());
+        myHashMap.put("Prepaid", Boolean.toString(card.isPrepaid()));
+        myHashMap.put("Bank", card.getBank().toString());
+        myHashMap.put("Country", countryInfo(card));
+        myHashMap.put("Number", card.getNumber().toString());
         return myHashMap;
     }
 
