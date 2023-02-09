@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal">
 
     <TextView
@@ -10,19 +10,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="12dp"
-        tools:text="@string/scheme_title"
+        android:textColor="@android:color/holo_blue_bright"
         android:textSize="24sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        tools:text="@string/scheme_title" />
 
     <TextView
         android:id="@+id/textViewInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="12dp"
-        tools:text="@string/scheme_title"
+        android:textColor="@android:color/holo_green_light"
         android:textSize="24sp"
-        android:textStyle="bold"/>
-
+        android:textStyle="bold"
+        tools:text="@string/scheme_title" />
 
 
 </LinearLayout>
