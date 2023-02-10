@@ -4,7 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class ConverterMAP {
-    private FilterCard filterCard = new FilterCard();
+    private final FilterCard filterCard = new FilterCard();
 
 
     private final Map<String, String> myLinkedHashMap = new LinkedHashMap<>();

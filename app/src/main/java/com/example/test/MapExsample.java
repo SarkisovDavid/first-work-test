@@ -5,11 +5,13 @@ import java.util.Map;
 
 public class MapExsample {
 
+    private final FilterCard filterCard = new FilterCard();
+
     private final Map<String, String> myLinkedHashMap = new LinkedHashMap<>();
 
     public Map<String, String> convert(Card card) {
         myLinkedHashMap.put("Card Info", cardInfo(card));
-        return myLinkedHashMap;
+        return filterCard.filterMap(myLinkedHashMap);
     }
 
     private String cardInfo (Card card) {
