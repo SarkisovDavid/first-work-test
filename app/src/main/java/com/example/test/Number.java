@@ -5,20 +5,20 @@ import com.google.gson.annotations.SerializedName;
 public class Number {
 
     @SerializedName("length")
-    private int length;
+    private Integer length;
     @SerializedName("luhn")
-    private boolean luhn;
+    private Boolean luhn;
 
-    public Number(int length, boolean luhn) {
+    public Number(Integer length, Boolean luhn) {
         this.length = length;
         this.luhn = luhn;
     }
 
-    public int getLength() {
+    public Integer getLength() {
         return length;
     }
 
-    public boolean isLuhn() {
+    public Boolean isLuhn() {
         return luhn;
     }
 
