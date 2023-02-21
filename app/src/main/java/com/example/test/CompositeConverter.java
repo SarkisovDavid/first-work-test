@@ -12,7 +12,4 @@ public class CompositeConverter {
         merge.putAll(mMapExsample.convert(card));
         return merge;
     }
-
-
-
 }

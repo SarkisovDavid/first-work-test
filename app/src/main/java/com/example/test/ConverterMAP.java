@@ -6,11 +6,8 @@ import java.util.Map;
 public class ConverterMAP {
     private final FilterCard filterCard = new FilterCard();
 
-
-    private final Map<String, String> myLinkedHashMap = new LinkedHashMap<>();
-
     public Map<String, String> convert(Card card) {
-
+        Map<String, String> myLinkedHashMap = new LinkedHashMap<>();
         myLinkedHashMap.put("Scheme:", card.getScheme());
         myLinkedHashMap.put("Type:", card.getType());
         myLinkedHashMap.put("Brand:", card.getBrand());
@@ -73,6 +70,5 @@ public class ConverterMAP {
         }
         return result;
     }
-
 }
 

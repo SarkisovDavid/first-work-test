@@ -11,17 +11,17 @@
         android:id="@+id/textViewTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
+        android:padding="@dimen/padding_16dp"
         android:text="@string/bank_card_information"
         android:textAlignment="center"
-        android:textSize="24sp"
+        android:textSize="@dimen/text_size_24sp"
         android:textStyle="bold"/>
 
     <EditText
         android:id="@+id/editTextBin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="12dp"
+        android:layout_margin="@dimen/margin_12dp"
         android:hint="@string/hint_number"
         android:inputType="number"
          />
@@ -30,9 +30,9 @@
         android:id="@+id/buttonSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginStart="@dimen/margin_24dp"
+        android:layout_marginEnd="@dimen/margin_24dp"
+        android:layout_marginBottom="@dimen/margin_24dp"
         android:text="@string/search"
         />
 
