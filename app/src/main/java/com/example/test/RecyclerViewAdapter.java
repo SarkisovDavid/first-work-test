@@ -177,7 +177,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         }
     }
 
-    public class MainInfoViewHolder extends RecyclerView.ViewHolder {
+    public static class MainInfoViewHolder extends RecyclerView.ViewHolder {
         TextView textViewHeader;
         TextView textViewInfo;
 

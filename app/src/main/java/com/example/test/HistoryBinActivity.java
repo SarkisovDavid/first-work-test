@@ -16,9 +16,6 @@ import java.util.Map;
 
 public class HistoryBinActivity extends AppCompatActivity {
 
-    // private final CardEntityConverter cardEntityConverter = new CardEntityConverter();
-    // private HistoryBinViewModel viewModel;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

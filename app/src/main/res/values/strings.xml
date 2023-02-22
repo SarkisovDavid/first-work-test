@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Test</string>
     <string name="bank_card_information">Bank card information</string>
-    <string name="hint_number">Enter the first digits of a card number (BIN/IIN)</string>
+    <string name="hint_number"><font size="15">Enter the first digits of a card number (BIN/IIN)</font></string>
     <string name="search">Search</string>
     <string name="scheme_title">Scheme:</string>
     <string name="toast_no_data">Enter data</string>
