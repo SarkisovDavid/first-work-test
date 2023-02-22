@@ -21,14 +21,16 @@ public class ConverterMAP {
     }
 
     private String countryInfo(Country country) {
-        String cardCountryInfo = null;
-        if(country != null) {
-            if (country.getAlpha2() != null && country.getName() != null) {
-                cardCountryInfo = country.getAlpha2() + " " + country.getName();
-            } else if (country.getName() != null) {
-                cardCountryInfo = country.getName();
-            } else if (country.getAlpha2() != null) {
-                cardCountryInfo = country.getAlpha2();
+        String cardCountryInfo = "";
+        if (country != null) {
+            if (country.getAlpha2() != null) {
+                cardCountryInfo = cardCountryInfo + country.getAlpha2();
+            }
+            if (!cardCountryInfo.isEmpty()) {
+                cardCountryInfo = cardCountryInfo + " ";
+            }
+            if (country.getName() != null) {
+                cardCountryInfo = cardCountryInfo + country.getName();
             }
         }
         return cardCountryInfo;
@@ -36,12 +38,14 @@ public class ConverterMAP {
 
     private String bankInfo(Card card) {
         String cardBankNameCity = "";
-        if (card.getBank().getName() != null && card.getBank().getCity() != null) {
-            cardBankNameCity = card.getBank().getName() + ", " + card.getBank().getCity();
-        } else if (card.getBank().getCity() != null) {
-            cardBankNameCity = card.getBank().getCity();
-        } else if (card.getBank().getName() != null) {
-            cardBankNameCity = card.getBank().getName();
+        if (card.getBank().getName() != null) {
+            cardBankNameCity = cardBankNameCity + card.getBank().getName();
+        }
+        if (!cardBankNameCity.isEmpty()) {
+            cardBankNameCity = cardBankNameCity + " ";
+        }
+        if (card.getBank().getCity() != null) {
+            cardBankNameCity = cardBankNameCity + card.getBank().getCity();
         }
         return cardBankNameCity;
     }
@@ -63,8 +67,7 @@ public class ConverterMAP {
         if (predicate != null) {
             if (predicate) {
                 result = trueString;
-            }
-            else {
+            } else {
                 result = falseString;
             }
         }
