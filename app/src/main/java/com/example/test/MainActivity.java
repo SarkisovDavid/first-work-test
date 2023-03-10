@@ -6,9 +6,11 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
-import java.util.Map;
-
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.functions.Consumer;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,12 +22,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         viewModel = new ViewModelProvider(this).get(MainViewModel.class);
-        viewModel.getCardMutableLiveData().observe(this, new Observer<Map<String, String>>() {
-            @Override
-            public void onChanged(Map<String, String> stringStringMap) {
-                Log.d(TAG, stringStringMap.toString());
-            }
-        });
+        viewModel.getCardMutableLiveData().observe(this, card -> Log.d(TAG, card.toString()));
                 viewModel.loadCardInfo();
 
     }
