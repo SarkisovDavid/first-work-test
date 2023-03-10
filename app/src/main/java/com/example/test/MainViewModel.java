@@ -6,6 +6,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import java.util.List;
@@ -14,18 +15,22 @@ import java.util.Map;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.core.ObservableSource;
+import io.reactivex.rxjava3.core.Observer;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.functions.Consumer;
 import io.reactivex.rxjava3.functions.Function;
+import io.reactivex.rxjava3.functions.Predicate;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class MainViewModel extends AndroidViewModel {
 
     private final ConverterMAP converterMAP = new ConverterMAP();
     private final MapExsample mMapExsample = new MapExsample();
+    private static final String TAG = "MainViewModel";
     private final MutableLiveData<List<Map.Entry<String, String>>> cardMutableLiveData = new MutableLiveData<>();
     private final CompositeDisposable compositeDisposable = new CompositeDisposable();
+
 
     public MainViewModel(@NonNull Application application) {
         super(application);
@@ -35,8 +40,8 @@ public class MainViewModel extends AndroidViewModel {
         return cardMutableLiveData;
     }
 
-    public void loadCardInfo(String bin) {
-        Disposable disposable = ApiFactory.apiService.cardInfo(bin)
+    public void loadCardInfo() {
+        Disposable disposable = ApiFactory.apiService.cardInfo(45717360)
                 .subscribeOn(Schedulers.io())
                 .map(new Function<Card, Map<String, String>>() {
                     @Override
@@ -69,6 +74,7 @@ public class MainViewModel extends AndroidViewModel {
                 );
         compositeDisposable.add(disposable);
     }
+
 
     @Override
     protected void onCleared() {
