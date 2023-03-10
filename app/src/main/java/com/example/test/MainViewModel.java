@@ -8,7 +8,6 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import java.util.Collection;
 import java.util.Map;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
@@ -18,7 +17,6 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.functions.Function;
 import io.reactivex.rxjava3.functions.Predicate;
-import io.reactivex.rxjava3.functions.Supplier;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class MainViewModel extends AndroidViewModel {
@@ -38,7 +36,7 @@ public class MainViewModel extends AndroidViewModel {
     }
 
     public void loadCardInfo() {
-        Disposable disposable = ApiFactory.apiService.cardInfo("45717360")
+        Disposable disposable = ApiFactory.apiService.cardInfo()
                 .subscribeOn(Schedulers.io())
                 .map(new Function<Card, Map<String, String>>() {
                     @Override
@@ -63,10 +61,9 @@ public class MainViewModel extends AndroidViewModel {
                         }
                     }
                 })
-                .toList()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                        cardInfoItems -> Log.d("MainViewModel", cardInfoItems.toString()),
+                        cardInfoItems -> Log.d("MainViewModel", cardInfoItems.getKey() + ' ' + cardInfoItems.getValue()),
                         throwable -> Log.d("MainActivity", throwable.toString())
                 );
         compositeDisposable.add(disposable);
