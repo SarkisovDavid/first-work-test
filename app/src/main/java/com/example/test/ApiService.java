@@ -8,5 +8,5 @@ public interface ApiService {
 
 
     @GET("{BIN}")
-    Single<Card> cardInfo(@Path("BIN") String bin);
+    Single<Card> cardInfo(@Path("BIN") String BIN);
 }

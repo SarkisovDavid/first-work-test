@@ -9,9 +9,9 @@
         android:id="@+id/textViewHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_12_dp"
+        android:layout_margin="12dp"
         android:textColor="@android:color/holo_blue_bright"
-        android:textSize="@dimen/text_size_24_sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         tools:text="@string/scheme_title" />
 
@@ -19,9 +19,9 @@
         android:id="@+id/textViewInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_12_dp"
+        android:layout_margin="12dp"
         android:textColor="@android:color/holo_green_light"
-        android:textSize="@dimen/text_size_24_sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         tools:text="@string/scheme_title" />
 

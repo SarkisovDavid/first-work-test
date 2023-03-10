@@ -24,7 +24,6 @@ public class MainViewModel extends AndroidViewModel {
 
     private final ConverterMAP converterMAP = new ConverterMAP();
     private final MapExsample mMapExsample = new MapExsample();
-    private final CompositeConverter mCompositeConverter = new CompositeConverter();
     private final MutableLiveData<List<Map.Entry<String, String>>> cardMutableLiveData = new MutableLiveData<>();
     private final CompositeDisposable compositeDisposable = new CompositeDisposable();
 
@@ -42,7 +41,10 @@ public class MainViewModel extends AndroidViewModel {
                 .map(new Function<Card, Map<String, String>>() {
                     @Override
                     public Map<String, String> apply(Card card) {
-                        return mCompositeConverter.mapMergeMap(card);
+                        Map<String, String> conv1 = mMapExsample.convert(card);
+                        Map<String, String> conv2 = converterMAP.convert(card);
+                        conv1.putAll(conv2);
+                        return conv1;
                     }
                 })
                 .flatMapObservable(new Function<Map<String, String>, ObservableSource<Map.Entry<String, String>>>() {

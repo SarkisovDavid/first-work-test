@@ -11,7 +11,7 @@ public class Card {
     @SerializedName("brand")
     private String brand;
     @SerializedName("prepaid")
-    private boolean prepaid;
+    private Boolean prepaid;
     @SerializedName("bank")
     private Bank bank;
     @SerializedName("country")
@@ -41,7 +41,7 @@ public class Card {
         return brand;
     }
 
-    public boolean isPrepaid() {
+    public Boolean isPrepaid() {
         return prepaid;
     }
 
@@ -56,6 +56,7 @@ public class Card {
     public Number getNumber() {
         return number;
     }
+
 
     @Override
     public String toString() {
