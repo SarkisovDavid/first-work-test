@@ -43,10 +43,10 @@
         />
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="12dp"
-        tools:text="@string/scheme_title"
+        android:text="@string/scheme_title"
         android:textSize="24sp"
         android:textStyle="bold"/>
 
