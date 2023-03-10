@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         viewModel = new ViewModelProvider(this).get(MainViewModel.class);
-        viewModel.getCardMutableLiveData().observe(this, card -> Log.d(TAG, card.toString()));
+        viewModel.getCardMutableLiveData().observe(this, string -> Log.d(TAG, string));
                 viewModel.loadCardInfo();
 
     }
