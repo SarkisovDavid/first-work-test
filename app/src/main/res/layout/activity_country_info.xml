@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/textViewCountryHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_12_dp"
+        android:textColor="@android:color/holo_blue_bright"
+        android:textSize="@dimen/text_size_24_sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        tools:text="@string/scheme_title"
+        tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/textViewLatitudeLongitude"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_12_dp"
+            android:textColor="@android:color/holo_blue_bright"
+            android:textSize="@dimen/text_size_24_sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/textViewCountryHeader"
+            tools:visibility="visible"
+            tools:text="@string/scheme_title"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/textViewCountryName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_12_dp"
+            android:textColor="@android:color/holo_green_light"
+            android:textSize="@dimen/text_size_24_sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/textViewCountryHeader"
+            tools:visibility="visible"
+            tools:text="@string/scheme_title"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/textViewCountryCoordinates"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_12_dp"
+            android:textColor="@android:color/holo_green_light"
+            android:textSize="@dimen/text_size_24_sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/textViewCountryName"
+            app:layout_constraintStart_toEndOf="@+id/textViewLatitudeLongitude"
+            tools:visibility="visible"
+            tools:text="@string/scheme_title" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
