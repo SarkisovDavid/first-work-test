@@ -37,8 +37,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.textViewInfo.setText(item.getValue());
     }
 
-
-    @SuppressLint("NotifyDataSetChanged")
     public void updateCardInfo(List<Map.Entry<String, String>> cardsItems){
         this.cardsItems = cardsItems;
         notifyDataSetChanged();
