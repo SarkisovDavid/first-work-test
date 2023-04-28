@@ -49,30 +49,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChanged(List<CardInfoItemModel> cardInfoItemModels) {
                 recyclerViewAdapter.updateCardInfo(cardInfoItemModels);
-                recyclerViewAdapter.setOnBankUrlClickListener(new RecyclerViewAdapter.OnBankUrlClickListener() {
-                    @Override
-                    public void onBankUrlClick(String url) {
-                        Intent intent = new Intent(Intent.ACTION_VIEW);
-                        intent.setData(Uri.parse("http://" + url));
-                        startActivity(intent);
-                    }
-                });
-                recyclerViewAdapter.setOnBankPhoneClickListener(new RecyclerViewAdapter.OnBankPhoneClickListener() {
-                    @Override
-                    public void onBankPhoneClick(String phone) {
-                        Intent intent = new Intent(Intent.ACTION_DIAL);
-                        intent.setData(Uri.parse("tel:" + phone));
-                        startActivity(intent);
-                    }
-                });
-                recyclerViewAdapter.setOnBankMapClickListener(new RecyclerViewAdapter.OnBankMapClickListener() {
-                    @Override
-                    public void onBankMapClick(String map) {
-                        Intent intent = new Intent(Intent.ACTION_VIEW);
-                        intent.setData(Uri.parse("geo:" + map));
-                        startActivity(intent);
-                    }
-                });
             }
         });
     }
@@ -84,6 +60,30 @@ public class MainActivity extends AppCompatActivity {
         buttonSearch = findViewById(R.id.buttonSearch);
         recyclerViewCardInfo.setLayoutManager(new LinearLayoutManager(MainActivity.this));
         recyclerViewCardInfo.setAdapter(recyclerViewAdapter);
+        recyclerViewAdapter.setOnBankUrlClickListener(new RecyclerViewAdapter.OnBankUrlClickListener() {
+            @Override
+            public void onBankUrlClick(String url) {
+                launchActivityByAction(Intent.ACTION_VIEW, "http://" + url);
+            }
+        });
+        recyclerViewAdapter.setOnBankPhoneClickListener(new RecyclerViewAdapter.OnBankPhoneClickListener() {
+            @Override
+            public void onBankPhoneClick(String phone) {
+                launchActivityByAction(Intent.ACTION_DIAL, "tel:" + phone);
+            }
+        });
+        recyclerViewAdapter.setOnBankMapClickListener(new RecyclerViewAdapter.OnBankMapClickListener() {
+            @Override
+            public void onBankMapClick(String map) {
+                launchActivityByAction(Intent.ACTION_VIEW, "geo:" + map);
+            }
+        });
+    }
+
+    public void launchActivityByAction (String action, String uri) {
+        Intent intent = new Intent(action);
+        intent.setData(Uri.parse(uri));
+        startActivity(intent);
     }
 
     @Override

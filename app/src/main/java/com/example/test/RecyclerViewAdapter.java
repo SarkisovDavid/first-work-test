@@ -67,60 +67,72 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof MainInfoViewHolder) {
-            MainInfoViewHolder mapViewHolder = (MainInfoViewHolder) holder;
-            MainCardInfo mainCardInfo = (MainCardInfo) dataSet.get(position);
-            mapViewHolder.textViewHeader.setText(mainCardInfo.header());
-            mapViewHolder.textViewInfo.setText(mainCardInfo.getValue());
+            addMainCardInfo(holder, position);
         } else if (holder instanceof CountryInfoViewHolder) {
-            CountryInfoViewHolder countryInfoViewHolder = (CountryInfoViewHolder) holder;
-            CountryInfoItemModel countryInfoItemModel = (CountryInfoItemModel) dataSet.get(position);
-            if (countryInfoItemModel.getCountryName() != null && !countryInfoItemModel.getCountryName().isEmpty()) {
-                countryInfoViewHolder.textViewCountryHeader.setVisibility(View.VISIBLE);
-                countryInfoViewHolder.textViewCountryName.setVisibility(View.VISIBLE);
-                countryInfoViewHolder.textViewCountryHeader.setText(countryInfoItemModel.getHeader());
-                countryInfoViewHolder.textViewCountryName.setText(countryInfoItemModel.getCountryName());
-            }
-            if (countryInfoItemModel.getCoordinate() != null && !countryInfoItemModel.getCoordinate().isEmpty()) {
-                countryInfoViewHolder.textViewLatitudeLongitude.setVisibility(View.VISIBLE);
-                countryInfoViewHolder.textViewCountryCoordinates.setVisibility(View.VISIBLE);
-                countryInfoViewHolder.textViewLatitudeLongitude.setText(countryInfoItemModel.getHeaderCoordinate());
-                countryInfoViewHolder.textViewCountryCoordinates.setText(countryInfoItemModel.getCoordinate());
-                countryInfoViewHolder.textViewCountryCoordinates.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        onBankMapClickListener.onBankMapClick(
-                                countryInfoItemModel.getCoordinate());
-                    }
-                });
-            }
+            addCountryInfo(holder, position);
         } else {
-            BankInfoViewHolder bankInfoViewHolder = (BankInfoViewHolder) holder;
-            BankInfoItemModel bankInfoItemModel = (BankInfoItemModel) dataSet.get(position);
-            bankInfoViewHolder.textViewBankHeader.setText(bankInfoItemModel.header());
-            if (bankInfoItemModel.getBankName() != null && !bankInfoItemModel.getBankName().isEmpty()) {
-                bankInfoViewHolder.textViewBankName.setVisibility(View.VISIBLE);
-                bankInfoViewHolder.textViewBankName.setText(bankInfoItemModel.getBankName());
-            }
-            if (bankInfoItemModel.getBankUrl() != null && !bankInfoItemModel.getBankUrl().isEmpty()) {
-                bankInfoViewHolder.textViewBankUrl.setVisibility(View.VISIBLE);
-                bankInfoViewHolder.textViewBankUrl.setText(bankInfoItemModel.getBankUrl());
-                bankInfoViewHolder.textViewBankUrl.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        onBankUrlClickListener.onBankUrlClick(bankInfoItemModel.getBankUrl());
-                    }
-                });
-            }
-            if (bankInfoItemModel.getBankPhone() != null && !bankInfoItemModel.getBankPhone().isEmpty()) {
-                bankInfoViewHolder.textViewBankPhone.setVisibility(View.VISIBLE);
-                bankInfoViewHolder.textViewBankPhone.setText(bankInfoItemModel.getBankPhone());
-                bankInfoViewHolder.textViewBankPhone.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        onBankPhoneClickListener.onBankPhoneClick(bankInfoItemModel.getBankPhone());
-                    }
-                });
-            }
+            addBankInfo(holder, position);
+        }
+    }
+
+    private void addMainCardInfo(final RecyclerView.ViewHolder holder, int position) {
+        MainInfoViewHolder mapViewHolder = (MainInfoViewHolder) holder;
+        MainCardInfo mainCardInfo = (MainCardInfo) dataSet.get(position);
+        mapViewHolder.textViewHeader.setText(mainCardInfo.header());
+        mapViewHolder.textViewInfo.setText(mainCardInfo.getValue());
+    }
+
+    public void addCountryInfo(final RecyclerView.ViewHolder holder, int position) {
+        CountryInfoViewHolder countryInfoViewHolder = (CountryInfoViewHolder) holder;
+        CountryInfoItemModel countryInfoItemModel = (CountryInfoItemModel) dataSet.get(position);
+        if (countryInfoItemModel.getCountryName() != null && !countryInfoItemModel.getCountryName().isEmpty()) {
+            countryInfoViewHolder.textViewCountryHeader.setVisibility(View.VISIBLE);
+            countryInfoViewHolder.textViewCountryName.setVisibility(View.VISIBLE);
+            countryInfoViewHolder.textViewCountryHeader.setText(countryInfoItemModel.getHeader());
+            countryInfoViewHolder.textViewCountryName.setText(countryInfoItemModel.getCountryName());
+        }
+        if (countryInfoItemModel.getCoordinate() != null && !countryInfoItemModel.getCoordinate().isEmpty()) {
+            countryInfoViewHolder.textViewLatitudeLongitude.setVisibility(View.VISIBLE);
+            countryInfoViewHolder.textViewCountryCoordinates.setVisibility(View.VISIBLE);
+            countryInfoViewHolder.textViewLatitudeLongitude.setText(countryInfoItemModel.getHeaderCoordinate());
+            countryInfoViewHolder.textViewCountryCoordinates.setText(countryInfoItemModel.getCoordinate());
+            countryInfoViewHolder.textViewCountryCoordinates.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onBankMapClickListener.onBankMapClick(
+                            countryInfoItemModel.getCoordinate());
+                }
+            });
+        }
+    }
+
+    public void addBankInfo(final RecyclerView.ViewHolder holder, int position) {
+        BankInfoViewHolder bankInfoViewHolder = (BankInfoViewHolder) holder;
+        BankInfoItemModel bankInfoItemModel = (BankInfoItemModel) dataSet.get(position);
+        bankInfoViewHolder.textViewBankHeader.setText(bankInfoItemModel.header());
+        if (bankInfoItemModel.getBankName() != null && !bankInfoItemModel.getBankName().isEmpty()) {
+            bankInfoViewHolder.textViewBankName.setVisibility(View.VISIBLE);
+            bankInfoViewHolder.textViewBankName.setText(bankInfoItemModel.getBankName());
+        }
+        if (bankInfoItemModel.getBankUrl() != null && !bankInfoItemModel.getBankUrl().isEmpty()) {
+            bankInfoViewHolder.textViewBankUrl.setVisibility(View.VISIBLE);
+            bankInfoViewHolder.textViewBankUrl.setText(bankInfoItemModel.getBankUrl());
+            bankInfoViewHolder.textViewBankUrl.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onBankUrlClickListener.onBankUrlClick(bankInfoItemModel.getBankUrl());
+                }
+            });
+        }
+        if (bankInfoItemModel.getBankPhone() != null && !bankInfoItemModel.getBankPhone().isEmpty()) {
+            bankInfoViewHolder.textViewBankPhone.setVisibility(View.VISIBLE);
+            bankInfoViewHolder.textViewBankPhone.setText(bankInfoItemModel.getBankPhone());
+            bankInfoViewHolder.textViewBankPhone.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onBankPhoneClickListener.onBankPhoneClick(bankInfoItemModel.getBankPhone());
+                }
+            });
         }
     }
 
