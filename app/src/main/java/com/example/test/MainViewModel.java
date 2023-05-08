@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import androidx.lifecycle.ViewModel;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.disposables.Disposable;
@@ -19,16 +20,22 @@ import io.reactivex.rxjava3.functions.Consumer;
 import io.reactivex.rxjava3.functions.Function;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
-public class MainViewModel extends AndroidViewModel {
+public class MainViewModel extends ViewModel {
 
-    private final MainConverter mMainConverter = new MainConverter();
-    private final CardEntityConverter mCardEntityConverter = new CardEntityConverter();
+    private MainConverter mMainConverter = null;
+    private CardEntityConverter mCardEntityConverter = null;
     private final MutableLiveData<List<CardInfoItemModel>> cardMutableLiveData = new MutableLiveData<>();
     private final CompositeDisposable compositeDisposable = new CompositeDisposable();
-    private final BinDao binDao = BinDatabase.getInstance(getApplication()).binDao();
+    private BinDao binDao = null;
 
     public MainViewModel(@NonNull Application application) {
         super(application);
+    }
+
+    public MainViewModel(MainConverter mainConverter, CardEntityConverter cardEntityConverter, BinDao binDao) {
+        this.mMainConverter = mainConverter;
+        this.mCardEntityConverter = cardEntityConverter;
+        this.binDao = binDao;
     }
 
     public LiveData<List<CardInfoItemModel>> getCardMutableLiveData() {
