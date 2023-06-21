@@ -6,11 +6,11 @@ import dagger.Component;
 
 public class App extends Application {
 
-    private AppComponent appComponent;
+    public AppComponent appComponent;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        appComponent =
+        appComponent = DaggerAppComponent.factory().create(this);
     }
 }

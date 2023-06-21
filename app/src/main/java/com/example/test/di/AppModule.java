@@ -29,8 +29,9 @@ public class AppModule {
     }
 
     @Provides
-    public MainViewModel provideMainViewModel(MainConverter mainConverter, CardEntityConverter cardEntityConverter,  BinDao binDao) {
-        return new MainViewModel(mainConverter, cardEntityConverter, binDao);
+    public ViewModelFactory provideViewModelFactory(MainConverter mainConverter, CardEntityConverter cardEntityConverter,  BinDao binDao) {
+        return new ViewModelFactory(mainConverter, cardEntityConverter, binDao);
     }
+
 
 }
