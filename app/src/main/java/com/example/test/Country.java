@@ -15,11 +15,11 @@ public class Country {
     @SerializedName("currency")
     private String currency;
     @SerializedName("latitude")
-    private int latitude;
+    private float latitude;
     @SerializedName("longitude")
-    private int longitude;
+    private float longitude;
 
-    public Country(int numeric, String alpha2, String name, String emoji, String currency, int latitude, int longitude) {
+    public Country(int numeric, String alpha2, String name, String emoji, String currency, float latitude, float longitude) {
         this.numeric = numeric;
         this.alpha2 = alpha2;
         this.name = name;
@@ -49,11 +49,11 @@ public class Country {
         return currency;
     }
 
-    public int getLatitude() {
+    public float getLatitude() {
         return latitude;
     }
 
-    public int getLongitude() {
+    public float getLongitude() {
         return longitude;
     }
 
