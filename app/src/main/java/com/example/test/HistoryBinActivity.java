@@ -10,21 +10,34 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.test.di.App;
+import com.example.test.di.MultiViewModelFactory;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import javax.inject.Inject;
+
 public class HistoryBinActivity extends AppCompatActivity {
+
+    @Inject
+    MultiViewModelFactory multiViewModelFactory;
+
+//    @Inject
+//    HistoryViewModelFactory historyViewModelFactory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        App app = (App) getApplication();
+        app.appComponent.inject(this);
         setContentView(R.layout.activity_history_bin);
         RecyclerView recyclerViewHistory = findViewById(R.id.recyclerViewHistory);
         HistoryRecyclerViewAdapter recyclerViewAdapter = new HistoryRecyclerViewAdapter(HistoryBinActivity.this, Collections.emptyList());
         recyclerViewHistory.setLayoutManager(new LinearLayoutManager(HistoryBinActivity.this));
         recyclerViewHistory.setAdapter(recyclerViewAdapter);
-        HistoryBinViewModel viewModel = new ViewModelProvider(this).get(HistoryBinViewModel.class);
+        HistoryBinViewModel viewModel = new ViewModelProvider(this, multiViewModelFactory).get(HistoryBinViewModel.class);
         viewModel.getHistoryBin();
         viewModel.getHistoryMutableLiveData().observe(this, new Observer<List<Map.Entry<String, String>>>() {
             @Override

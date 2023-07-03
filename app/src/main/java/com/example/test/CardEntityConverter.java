@@ -3,9 +3,16 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.inject.Inject;
+
 public class CardEntityConverter {
 
-    private final FilterCard filterCard = new FilterCard();
+    private FilterCard filterCard;
+
+    @Inject
+    public CardEntityConverter(FilterCard filterCard) {
+        this.filterCard = filterCard;
+    }
 
     public CardEntity convertForHistory (Card card, String userBin, String timestamp) {
         return new CardEntity(userBin, card.getScheme(), card.getType(), card.getBank().getName(), timestamp);

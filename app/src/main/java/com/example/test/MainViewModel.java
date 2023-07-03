@@ -1,17 +1,14 @@
 package com.example.test;
 
 import android.annotation.SuppressLint;
-import android.app.Application;
 
-import androidx.annotation.NonNull;
-import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import java.io.Closeable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+
 
 import javax.inject.Inject;
 
@@ -32,6 +29,7 @@ public class MainViewModel extends ViewModel {
     private final CompositeDisposable compositeDisposable = new CompositeDisposable();
     private BinDao binDao;
 
+    @Inject
     public MainViewModel(MainConverter mainConverter, CardEntityConverter cardEntityConverter, BinDao binDao) {
         this.mMainConverter = mainConverter;
         this.mCardEntityConverter = cardEntityConverter;

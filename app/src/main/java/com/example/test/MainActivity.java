@@ -3,11 +3,11 @@ package com.example.test;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Application;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -19,12 +19,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.test.di.App;
-import com.example.test.di.AppComponent;
-import com.example.test.di.DaggerAppComponent;
-import com.example.test.di.ViewModelFactory;
+import com.example.test.di.MultiViewModelFactory;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import javax.inject.Inject;
 
@@ -37,14 +37,17 @@ public class MainActivity extends AppCompatActivity {
     public String userBin;
 
     @Inject
-    ViewModelFactory viewModelFactory;
+    MultiViewModelFactory multiViewModelFactory;
+
+//    @Inject
+//    ViewModelFactory viewModelFactory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initViews();
-        App app = (App) getApplication() ;
+        App app = (App) getApplication();
         app.appComponent.inject(this);
         buttonSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        viewModel = new ViewModelProvider(this, viewModelFactory).get(MainViewModel.class);
+        viewModel = new ViewModelProvider(this, multiViewModelFactory).get(MainViewModel.class);
         viewModel.getCardMutableLiveData().observe(this, new Observer<List<CardInfoItemModel>>() {
             @Override
             public void onChanged(List<CardInfoItemModel> cardInfoItemModels) {

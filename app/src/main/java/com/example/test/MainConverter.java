@@ -3,7 +3,13 @@ package com.example.test;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 public class MainConverter {
+
+    @Inject
+    public MainConverter() {
+    }
 
     public List<CardInfoItemModel> convert(Card card) {
         List<CardInfoItemModel> listCardInfo = new ArrayList<>();
