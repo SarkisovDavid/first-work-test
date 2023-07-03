@@ -10,7 +10,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.test.di.App;
 import com.example.test.di.MultiViewModelFactory;
 
 import java.util.Collections;
@@ -23,9 +22,6 @@ public class HistoryBinActivity extends AppCompatActivity {
 
     @Inject
     MultiViewModelFactory multiViewModelFactory;
-
-//    @Inject
-//    HistoryViewModelFactory historyViewModelFactory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

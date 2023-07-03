@@ -1,8 +1,9 @@
-package com.example.test.di;
+package com.example.test;
 
 import android.app.Application;
 
-import dagger.Component;
+import com.example.test.di.AppComponent;
+import com.example.test.di.DaggerAppComponent;
 
 public class App extends Application {
 

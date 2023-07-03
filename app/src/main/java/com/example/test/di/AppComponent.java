@@ -6,7 +6,6 @@ import com.example.test.HistoryBinActivity;
 import com.example.test.MainActivity;
 
 import java.util.Map;
-import java.util.Set;
 
 import javax.inject.Provider;
 import javax.inject.Singleton;
@@ -20,9 +19,10 @@ import dagger.Component;
 public interface AppComponent {
 
     Map<Class<? extends ViewModel>, Provider<ViewModel>> getMap();
+
     @Component.Factory
     interface Factory {
-        AppComponent create (@BindsInstance Context context);
+        AppComponent create(@BindsInstance Context context);
     }
 
     void inject(MainActivity mainActivity);

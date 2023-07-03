@@ -3,7 +3,6 @@ package com.example.test;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,13 +17,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.test.di.App;
 import com.example.test.di.MultiViewModelFactory;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import javax.inject.Inject;
 
@@ -38,9 +34,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Inject
     MultiViewModelFactory multiViewModelFactory;
-
-//    @Inject
-//    ViewModelFactory viewModelFactory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void launchActivityByAction (String action, String uri) {
+    public void launchActivityByAction(String action, String uri) {
         Intent intent = new Intent(action);
         intent.setData(Uri.parse(uri));
         startActivity(intent);
