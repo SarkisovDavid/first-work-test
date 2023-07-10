@@ -1,6 +1,6 @@
 package com.example.test;
 
-import android.app.Application;
+import android.content.Context;
 
 import androidx.room.Database;
 import androidx.room.Room;
@@ -12,11 +12,11 @@ public abstract class BinDatabase extends RoomDatabase {
     private static final String DB_NAME = "card2.db";
     private static BinDatabase instance = null;
 
-    public static BinDatabase getInstance(Application application) {
+    public static BinDatabase getInstance(Context context) {
         if (instance == null) {
-            instance = Room.databaseBuilder(application, BinDatabase.class, DB_NAME).build();
+            instance = Room.databaseBuilder(context, BinDatabase.class, DB_NAME).build();
         }
         return instance;
     }
-    abstract BinDao binDao();
+    public abstract BinDao binDao();
 }

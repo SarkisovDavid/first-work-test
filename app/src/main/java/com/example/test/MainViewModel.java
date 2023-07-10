@@ -1,10 +1,7 @@
 package com.example.test;
 
 import android.annotation.SuppressLint;
-import android.app.Application;
 
-import androidx.annotation.NonNull;
-import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -12,6 +9,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+
+import javax.inject.Inject;
+
+import androidx.lifecycle.ViewModel;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.disposables.Disposable;
@@ -19,16 +20,20 @@ import io.reactivex.rxjava3.functions.Consumer;
 import io.reactivex.rxjava3.functions.Function;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
-public class MainViewModel extends AndroidViewModel {
+public class MainViewModel extends ViewModel {
 
-    private final MainConverter mMainConverter = new MainConverter();
-    private final CardEntityConverter mCardEntityConverter = new CardEntityConverter();
+    private MainConverter mMainConverter;
+
+    private CardEntityConverter mCardEntityConverter;
     private final MutableLiveData<List<CardInfoItemModel>> cardMutableLiveData = new MutableLiveData<>();
     private final CompositeDisposable compositeDisposable = new CompositeDisposable();
-    private final BinDao binDao = BinDatabase.getInstance(getApplication()).binDao();
+    private BinDao binDao;
 
-    public MainViewModel(@NonNull Application application) {
-        super(application);
+    @Inject
+    public MainViewModel(MainConverter mainConverter, CardEntityConverter cardEntityConverter, BinDao binDao) {
+        this.mMainConverter = mainConverter;
+        this.mCardEntityConverter = cardEntityConverter;
+        this.binDao = binDao;
     }
 
     public LiveData<List<CardInfoItemModel>> getCardMutableLiveData() {

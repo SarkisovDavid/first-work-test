@@ -17,8 +17,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.test.di.MultiViewModelFactory;
+
 import java.util.Collections;
 import java.util.List;
+
+import javax.inject.Inject;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,11 +32,16 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerViewAdapter recyclerViewAdapter;
     public String userBin;
 
+    @Inject
+    MultiViewModelFactory multiViewModelFactory;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initViews();
+        App app = (App) getApplication();
+        app.appComponent.inject(this);
         buttonSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        viewModel = new ViewModelProvider(this).get(MainViewModel.class);
+        viewModel = new ViewModelProvider(this, multiViewModelFactory).get(MainViewModel.class);
         viewModel.getCardMutableLiveData().observe(this, new Observer<List<CardInfoItemModel>>() {
             @Override
             public void onChanged(List<CardInfoItemModel> cardInfoItemModels) {
@@ -80,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void launchActivityByAction (String action, String uri) {
+    public void launchActivityByAction(String action, String uri) {
         Intent intent = new Intent(action);
         intent.setData(Uri.parse(uri));
         startActivity(intent);
