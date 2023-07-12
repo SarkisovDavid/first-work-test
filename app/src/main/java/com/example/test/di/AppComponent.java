@@ -2,8 +2,8 @@ package com.example.test.di;
 
 import android.content.Context;
 
-import com.example.test.HistoryBinActivity;
-import com.example.test.MainActivity;
+import com.example.test.presentation.HistoryBinActivity;
+import com.example.test.presentation.MainActivity;
 
 import java.util.Map;
 
@@ -28,6 +28,5 @@ public interface AppComponent {
     void inject(MainActivity mainActivity);
 
     void inject(HistoryBinActivity historyBinActivity);
-
 
 }

@@ -2,11 +2,13 @@ package com.example.test.di;
 
 import android.content.Context;
 
-import com.example.test.BinDao;
-import com.example.test.BinDatabase;
-
+import com.example.test.data.api.ApiFactory;
+import com.example.test.data.api.ApiService;
+import com.example.test.data.database.BinDao;
+import com.example.test.data.database.BinDatabase;
 import dagger.Module;
 import dagger.Provides;
+
 
 @Module
 public class DataBaseModule {
@@ -15,4 +17,8 @@ public class DataBaseModule {
     public BinDao provideBinDao(Context context) {
         return BinDatabase.getInstance(context).binDao();
     }
+
+    @Provides
+    public ApiService provideApiService(){return ApiFactory.apiService;}
+
 }

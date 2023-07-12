@@ -1,0 +1,72 @@
+package com.example.test.data.model;
+
+import com.google.gson.annotations.SerializedName;
+
+public class CountryDto {
+
+    @SerializedName("numeric")
+    private int numeric;
+    @SerializedName("alpha2")
+    private String alpha2;
+    @SerializedName("name")
+    private String name;
+    @SerializedName("emoji")
+    private String emoji;
+    @SerializedName("currency")
+    private String currency;
+    @SerializedName("latitude")
+    private float latitude;
+    @SerializedName("longitude")
+    private float longitude;
+
+    public CountryDto(int numeric, String alpha2, String name, String emoji, String currency, float latitude, float longitude) {
+        this.numeric = numeric;
+        this.alpha2 = alpha2;
+        this.name = name;
+        this.emoji = emoji;
+        this.currency = currency;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
+    public int getNumeric() {
+        return numeric;
+    }
+
+    public String getAlpha2() {
+        return alpha2;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getEmoji() {
+        return emoji;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public float getLatitude() {
+        return latitude;
+    }
+
+    public float getLongitude() {
+        return longitude;
+    }
+
+    @Override
+    public String toString() {
+        return "Country{" +
+                "numeric=" + numeric +
+                ", alpha2='" + alpha2 + '\'' +
+                ", name='" + name + '\'' +
+                ", emoji='" + emoji + '\'' +
+                ", currency='" + currency + '\'' +
+                ", latitude=" + latitude +
+                ", longitude=" + longitude +
+                '}';
+    }
+}
