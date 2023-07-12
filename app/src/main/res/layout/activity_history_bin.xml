@@ -5,4 +5,4 @@
     android:id="@+id/recyclerViewHistory"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HistoryBinActivity" />
+    tools:context=".presentation.HistoryBinActivity" />

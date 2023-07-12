@@ -1,4 +1,4 @@
-package com.example.test;
+package com.example.test.presentation;
 
 import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.test.R;
 import com.example.test.domain.model.BankInfoItemModel;
 import com.example.test.domain.model.CardInfoItemModel;
 import com.example.test.domain.model.CountryInfoItemModel;

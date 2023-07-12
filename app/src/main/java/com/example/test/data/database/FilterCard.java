@@ -1,4 +1,4 @@
-package com.example.test;
+package com.example.test.data.database;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;

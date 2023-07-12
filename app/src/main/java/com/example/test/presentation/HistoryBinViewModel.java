@@ -1,4 +1,4 @@
-package com.example.test;
+package com.example.test.presentation;
 
 import android.util.Log;
 
@@ -29,8 +29,6 @@ public class HistoryBinViewModel extends ViewModel {
         return historyMutableLiveData;
     }
 
-
-    //
     @Inject
     public HistoryBinViewModel(GetHistory getHistory) {
         this.getHistory = getHistory;

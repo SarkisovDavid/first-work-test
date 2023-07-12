@@ -1,6 +1,5 @@
 package com.example.test.domain.repository;
 
-import com.example.test.data.model.CardEntity;
 import com.example.test.domain.model.CardInfoItemModel;
 
 import java.util.List;

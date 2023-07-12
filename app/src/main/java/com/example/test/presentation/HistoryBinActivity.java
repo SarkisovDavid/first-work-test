@@ -1,4 +1,4 @@
-package com.example.test;
+package com.example.test.presentation;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -10,6 +10,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.test.App;
+import com.example.test.R;
 import com.example.test.di.MultiViewModelFactory;
 
 import java.util.Collections;

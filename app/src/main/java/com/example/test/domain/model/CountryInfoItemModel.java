@@ -1,6 +1,5 @@
 package com.example.test.domain.model;
 
-import com.example.test.domain.model.CardInfoItemModel;
 
 public class CountryInfoItemModel implements CardInfoItemModel {
 

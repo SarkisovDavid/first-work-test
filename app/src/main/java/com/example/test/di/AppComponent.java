@@ -2,11 +2,8 @@ package com.example.test.di;
 
 import android.content.Context;
 
-import com.example.test.HistoryBinActivity;
-import com.example.test.MainActivity;
-import com.example.test.data.repository.CardRepositoryImpl;
-import com.example.test.domain.repository.CardRepository;
-import com.example.test.domain.usecase.GetHistory;
+import com.example.test.presentation.HistoryBinActivity;
+import com.example.test.presentation.MainActivity;
 
 import java.util.Map;
 

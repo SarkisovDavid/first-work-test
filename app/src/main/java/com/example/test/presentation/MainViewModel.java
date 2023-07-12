@@ -1,21 +1,11 @@
-package com.example.test;
+package com.example.test.presentation;
 
-import android.annotation.SuppressLint;
-
-import com.example.test.data.api.ApiFactory;
-import com.example.test.data.api.MainConverter;
-import com.example.test.data.database.BinDao;
-import com.example.test.data.database.CardEntityConverter;
-import com.example.test.data.model.CardDto;
-import com.example.test.data.model.CardEntity;
 import com.example.test.domain.model.CardInfoItemModel;
 import com.example.test.domain.usecase.GetCardInfo;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 
@@ -26,7 +16,6 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.functions.Consumer;
-import io.reactivex.rxjava3.functions.Function;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class MainViewModel extends ViewModel {

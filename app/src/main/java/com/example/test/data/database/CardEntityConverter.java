@@ -1,5 +1,4 @@
 package com.example.test.data.database;
-import com.example.test.FilterCard;
 import com.example.test.data.model.CardDto;
 import com.example.test.data.model.CardEntity;
 

@@ -1,7 +1,7 @@
 package com.example.test.di;
 
-import com.example.test.HistoryBinViewModel;
-import com.example.test.MainViewModel;
+import com.example.test.presentation.HistoryBinViewModel;
+import com.example.test.presentation.MainViewModel;
 import com.example.test.data.repository.CardRepositoryImpl;
 import com.example.test.domain.repository.CardRepository;
 

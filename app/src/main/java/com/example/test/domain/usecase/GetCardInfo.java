@@ -1,6 +1,5 @@
 package com.example.test.domain.usecase;
 
-import com.example.test.data.model.CardDto;
 import com.example.test.domain.model.CardInfoItemModel;
 import com.example.test.domain.repository.CardRepository;
 

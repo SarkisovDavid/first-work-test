@@ -1,7 +1,5 @@
 package com.example.test.data.api;
 
-import com.example.test.data.api.ApiService;
-
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
