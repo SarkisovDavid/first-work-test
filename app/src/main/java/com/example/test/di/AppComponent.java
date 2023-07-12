@@ -4,6 +4,9 @@ import android.content.Context;
 
 import com.example.test.HistoryBinActivity;
 import com.example.test.MainActivity;
+import com.example.test.data.repository.CardRepositoryImpl;
+import com.example.test.domain.repository.CardRepository;
+import com.example.test.domain.usecase.GetHistory;
 
 import java.util.Map;
 
@@ -28,6 +31,5 @@ public interface AppComponent {
     void inject(MainActivity mainActivity);
 
     void inject(HistoryBinActivity historyBinActivity);
-
 
 }

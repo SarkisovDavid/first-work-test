@@ -1,4 +1,4 @@
-package com.example.test;
+package com.example.test.domain.model;
 
 public interface CardInfoItemModel {
 

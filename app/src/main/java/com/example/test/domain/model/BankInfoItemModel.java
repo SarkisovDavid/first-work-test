@@ -1,6 +1,8 @@
-package com.example.test;
+package com.example.test.domain.model;
 
-public class BankInfoItemModel implements CardInfoItemModel{
+import com.example.test.domain.model.CardInfoItemModel;
+
+public class BankInfoItemModel implements CardInfoItemModel {
 
     private String bankInfo;
     private String bankName;

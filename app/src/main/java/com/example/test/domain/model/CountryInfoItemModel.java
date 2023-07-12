@@ -1,6 +1,8 @@
-package com.example.test;
+package com.example.test.domain.model;
 
-public class CountryInfoItemModel implements CardInfoItemModel{
+import com.example.test.domain.model.CardInfoItemModel;
+
+public class CountryInfoItemModel implements CardInfoItemModel {
 
     private String header;
     private String headerCoordinate;

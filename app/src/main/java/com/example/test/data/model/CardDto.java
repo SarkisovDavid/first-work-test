@@ -1,9 +1,9 @@
-package com.example.test;
+package com.example.test.data.model;
 
 
 import com.google.gson.annotations.SerializedName;
 
-public class Card {
+public class CardDto {
 
     @SerializedName("scheme")
     private String scheme;
@@ -14,13 +14,13 @@ public class Card {
     @SerializedName("prepaid")
     private boolean prepaid;
     @SerializedName("bank")
-    private Bank bank;
+    private BankDto bank;
     @SerializedName("country")
-    private Country country;
+    private CountryDto country;
     @SerializedName("number")
-    private Number number;
+    private NumberDto number;
 
-    public Card(String scheme, String type, String brand, boolean prepaid, Bank bank, Country country, Number number) {
+    public CardDto(String scheme, String type, String brand, boolean prepaid, BankDto bank, CountryDto country, NumberDto number) {
         this.scheme = scheme;
         this.type = type;
         this.brand = brand;
@@ -46,15 +46,15 @@ public class Card {
         return prepaid;
     }
 
-    public Bank getBank() {
+    public BankDto getBank() {
         return bank;
     }
 
-    public Country getCountry() {
+    public CountryDto getCountry() {
         return country;
     }
 
-    public Number getNumber() {
+    public NumberDto getNumber() {
         return number;
     }
 

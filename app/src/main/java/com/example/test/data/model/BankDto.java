@@ -1,8 +1,8 @@
-package com.example.test;
+package com.example.test.data.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Bank {
+public class BankDto {
 
     @SerializedName("name")
     private String name;
@@ -13,7 +13,7 @@ public class Bank {
     @SerializedName("city")
     private String city;
 
-    public Bank(String name, String url, String phone, String city) {
+    public BankDto(String name, String url, String phone, String city) {
         this.name = name;
         this.url = url;
         this.phone = phone;

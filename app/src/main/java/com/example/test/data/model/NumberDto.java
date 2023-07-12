@@ -1,15 +1,15 @@
-package com.example.test;
+package com.example.test.data.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Number {
+public class NumberDto {
 
     @SerializedName("length")
     private Integer length;
     @SerializedName("luhn")
     private Boolean luhn;
 
-    public Number(Integer length, Boolean luhn) {
+    public NumberDto(Integer length, Boolean luhn) {
         this.length = length;
         this.luhn = luhn;
     }

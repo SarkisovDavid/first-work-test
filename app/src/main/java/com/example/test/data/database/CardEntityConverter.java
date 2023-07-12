@@ -1,4 +1,8 @@
-package com.example.test;
+package com.example.test.data.database;
+import com.example.test.FilterCard;
+import com.example.test.data.model.CardDto;
+import com.example.test.data.model.CardEntity;
+
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,7 +18,7 @@ public class CardEntityConverter {
         this.filterCard = filterCard;
     }
 
-    public CardEntity convertForHistory (Card card, String userBin, String timestamp) {
+    public CardEntity convertForHistory (CardDto card, String userBin, String timestamp) {
         return new CardEntity(userBin, card.getScheme(), card.getType(), card.getBank().getName(), timestamp);
     }
 

@@ -1,4 +1,11 @@
-package com.example.test;
+package com.example.test.data.api;
+
+import com.example.test.domain.model.BankInfoItemModel;
+import com.example.test.data.model.CardDto;
+import com.example.test.domain.model.CardInfoItemModel;
+import com.example.test.domain.model.CountryInfoItemModel;
+import com.example.test.domain.model.MainCardInfo;
+import com.example.test.data.model.NumberDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +18,7 @@ public class MainConverter {
     public MainConverter() {
     }
 
-    public List<CardInfoItemModel> convert(Card card) {
+    public List<CardInfoItemModel> convert(CardDto card) {
         List<CardInfoItemModel> listCardInfo = new ArrayList<>();
         if (infoRealValue(card.getScheme())) {
             MainCardInfo mainCardInfoScheme = new MainCardInfo("Scheme:", card.getScheme());
@@ -54,7 +61,7 @@ public class MainConverter {
 
     }
 
-    private String numberInfo(Number number) {
+    private String numberInfo(NumberDto number) {
         String numberCardInfo = null;
         if (number.getLength() != null && number.isLuhn() != null) {
             numberCardInfo = "Length: " + number.getLength() + "\n" + "Luhn: " + booleanToString(number.isLuhn(), "Yes", "No");

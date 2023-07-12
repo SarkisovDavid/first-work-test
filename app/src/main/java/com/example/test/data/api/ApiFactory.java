@@ -1,4 +1,6 @@
-package com.example.test;
+package com.example.test.data.api;
+
+import com.example.test.data.api.ApiService;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory;
@@ -15,5 +17,4 @@ public class ApiFactory {
             .build();
 
     public static final ApiService apiService = retrofit.create(ApiService.class);
-
 }

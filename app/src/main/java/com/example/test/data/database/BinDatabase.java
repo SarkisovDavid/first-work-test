@@ -1,6 +1,8 @@
-package com.example.test;
+package com.example.test.data.database;
 
 import android.content.Context;
+
+import com.example.test.data.model.CardEntity;
 
 import androidx.room.Database;
 import androidx.room.Room;

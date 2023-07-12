@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.test.di.MultiViewModelFactory;
+import com.example.test.domain.model.CardInfoItemModel;
 
 import java.util.Collections;
 import java.util.List;

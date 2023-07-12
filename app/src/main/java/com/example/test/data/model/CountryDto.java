@@ -1,8 +1,8 @@
-package com.example.test;
+package com.example.test.data.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Country {
+public class CountryDto {
 
     @SerializedName("numeric")
     private int numeric;
@@ -19,7 +19,7 @@ public class Country {
     @SerializedName("longitude")
     private float longitude;
 
-    public Country(int numeric, String alpha2, String name, String emoji, String currency, float latitude, float longitude) {
+    public CountryDto(int numeric, String alpha2, String name, String emoji, String currency, float latitude, float longitude) {
         this.numeric = numeric;
         this.alpha2 = alpha2;
         this.name = name;

@@ -1,4 +1,6 @@
-package com.example.test;
+package com.example.test.data.database;
+
+import com.example.test.data.model.CardEntity;
 
 import androidx.room.Dao;
 import androidx.room.Insert;

@@ -2,6 +2,15 @@ package com.example.test;
 
 import android.annotation.SuppressLint;
 
+import com.example.test.data.api.ApiFactory;
+import com.example.test.data.api.MainConverter;
+import com.example.test.data.database.BinDao;
+import com.example.test.data.database.CardEntityConverter;
+import com.example.test.data.model.CardDto;
+import com.example.test.data.model.CardEntity;
+import com.example.test.domain.model.CardInfoItemModel;
+import com.example.test.domain.usecase.GetCardInfo;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -22,18 +31,13 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class MainViewModel extends ViewModel {
 
-    private MainConverter mMainConverter;
-
-    private CardEntityConverter mCardEntityConverter;
+    GetCardInfo getCardInfo;
     private final MutableLiveData<List<CardInfoItemModel>> cardMutableLiveData = new MutableLiveData<>();
     private final CompositeDisposable compositeDisposable = new CompositeDisposable();
-    private BinDao binDao;
 
     @Inject
-    public MainViewModel(MainConverter mainConverter, CardEntityConverter cardEntityConverter, BinDao binDao) {
-        this.mMainConverter = mainConverter;
-        this.mCardEntityConverter = cardEntityConverter;
-        this.binDao = binDao;
+    public MainViewModel(GetCardInfo getCardInfo) {
+        this.getCardInfo = getCardInfo;
     }
 
     public LiveData<List<CardInfoItemModel>> getCardMutableLiveData() {
@@ -41,23 +45,8 @@ public class MainViewModel extends ViewModel {
     }
 
     public void loadCardInfo(String bin) {
-        Disposable disposable = ApiFactory.apiService.cardInfo(bin)
+        Disposable disposable = getCardInfo.execute(bin)
                 .subscribeOn(Schedulers.io())
-                .doOnSuccess(new Consumer<Card>() {
-                    @Override
-                    public void accept(Card card) {
-                        Date date = new Date();
-                        @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                        CardEntity history = mCardEntityConverter.convertForHistory(card, bin, format.format(date));
-                        binDao.insertBin(history);
-                    }
-                })
-                .map(new Function<Card, List<CardInfoItemModel>>() {
-                    @Override
-                    public List<CardInfoItemModel> apply(Card card) throws Throwable {
-                        return mMainConverter.convert(card);
-                    }
-                })
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<List<CardInfoItemModel>>() {
                     @Override
