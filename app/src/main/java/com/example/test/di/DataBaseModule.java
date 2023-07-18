@@ -1,11 +1,10 @@
 package com.example.test.di;
-
 import android.content.Context;
-
-import com.example.test.data.api.ApiFactory;
+import com.example.test.data.api.ApiFactory3;
 import com.example.test.data.api.ApiService;
 import com.example.test.data.database.BinDao;
 import com.example.test.data.database.BinDatabase;
+
 import dagger.Module;
 import dagger.Provides;
 
@@ -19,6 +18,7 @@ public class DataBaseModule {
     }
 
     @Provides
-    public ApiService provideApiService(){return ApiFactory.apiService;}
-
+    public ApiService provideApiService(){
+        return ApiFactory3.apiService;
+    }
 }

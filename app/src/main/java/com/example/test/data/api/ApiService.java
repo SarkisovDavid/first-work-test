@@ -8,7 +8,6 @@ import retrofit2.http.Path;
 
 public interface ApiService {
 
-
     @GET("{BIN}")
     Single<CardDto> cardInfo(@Path("BIN") String bin);
 

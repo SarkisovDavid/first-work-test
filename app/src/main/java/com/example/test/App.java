@@ -1,7 +1,6 @@
 package com.example.test;
 
 import android.app.Application;
-
 import com.example.test.di.AppComponent;
 import com.example.test.di.DaggerAppComponent;
 
