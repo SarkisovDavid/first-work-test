@@ -1,8 +1,6 @@
 package com.example.test.di;
 
 import android.content.Context;
-
-import com.example.test.data.api.ApiService;
 import com.example.test.presentation.HistoryBinActivity;
 import com.example.test.presentation.MainActivity;
 

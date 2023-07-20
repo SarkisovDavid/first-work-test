@@ -2,9 +2,9 @@ package com.example.test.data.repository;
 
 import android.annotation.SuppressLint;
 
-import com.example.test.data.database.CardEntityConverter;
-import com.example.test.data.api.MainConverter;
 import com.example.test.data.api.ApiService;
+import com.example.test.data.api.MainConverter;
+import com.example.test.data.database.CardEntityConverter;
 import com.example.test.data.database.BinDao;
 import com.example.test.data.model.CardDto;
 import com.example.test.data.model.CardEntity;
@@ -26,28 +26,28 @@ import io.reactivex.rxjava3.functions.Function;
 public class CardRepositoryImpl implements CardRepository {
 
 
-    MainConverter mainConverter;
-    ApiService apiService;
+    MainConverter mainConverterK;
+    ApiService apiServiceK;
     BinDao binDao;
     CardEntityConverter cardEntityConverter;
 
     @Inject
     public CardRepositoryImpl
             (
-                    ApiService apiService,
-                    MainConverter mainConverter,
+                    ApiService apiServiceK,
+                    MainConverter mainConverterK,
                     BinDao binDao,
                     CardEntityConverter cardEntityConverter
             ) {
-        this.apiService = apiService;
-        this.mainConverter = mainConverter;
+        this.apiServiceK = apiServiceK;
+        this.mainConverterK = mainConverterK;
         this.binDao = binDao;
         this.cardEntityConverter = cardEntityConverter;
     }
 
     @Override
     public Single<List<CardInfoItemModel>> getCardInfo(String bin) {
-        return apiService.cardInfo(bin)
+        return apiServiceK.cardInfo(bin)
                 .doOnSuccess(new Consumer<CardDto>() {
                     @Override
                     public void accept(CardDto card) {
@@ -60,7 +60,7 @@ public class CardRepositoryImpl implements CardRepository {
                 .map(new Function<CardDto, List<CardInfoItemModel>>() {
             @Override
             public List<CardInfoItemModel> apply(CardDto cardDto) throws Throwable {
-                return mainConverter.convert(cardDto);
+                return mainConverterK.convert(cardDto);
             }
         });
     }
