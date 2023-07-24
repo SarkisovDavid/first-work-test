@@ -17,11 +17,11 @@ public class DataBaseModule {
 
     @Provides
     public BinDao provideBinDao(Context context) {
-        return BinDatabase.getInstance(context).binDao();
+        return BinDatabase.Companion.getInstance(context).binDao();
     }
 
     @Provides
     public ApiService provideApiService(){
-        return ApiFactory.apiServiceK;
+        return ApiFactory.apiService;
     }
 }

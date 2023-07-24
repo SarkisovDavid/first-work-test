@@ -16,6 +16,6 @@ class ApiFactory {
             .build()
 
         @JvmField
-        val apiServiceK: ApiService = retrofit.create(ApiService::class.java)
+        val apiService: ApiService = retrofit.create(ApiService::class.java)
     }
 }

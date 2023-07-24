@@ -26,28 +26,28 @@ import io.reactivex.rxjava3.functions.Function;
 public class CardRepositoryImpl implements CardRepository {
 
 
-    MainConverter mainConverterK;
-    ApiService apiServiceK;
+    MainConverter mainConverter;
+    ApiService apiService;
     BinDao binDao;
     CardEntityConverter cardEntityConverter;
 
     @Inject
     public CardRepositoryImpl
             (
-                    ApiService apiServiceK,
-                    MainConverter mainConverterK,
+                    ApiService apiService,
+                    MainConverter mainConverter,
                     BinDao binDao,
                     CardEntityConverter cardEntityConverter
             ) {
-        this.apiServiceK = apiServiceK;
-        this.mainConverterK = mainConverterK;
+        this.apiService = apiService;
+        this.mainConverter = mainConverter;
         this.binDao = binDao;
         this.cardEntityConverter = cardEntityConverter;
     }
 
     @Override
     public Single<List<CardInfoItemModel>> getCardInfo(String bin) {
-        return apiServiceK.cardInfo(bin)
+        return apiService.cardInfo(bin)
                 .doOnSuccess(new Consumer<CardDto>() {
                     @Override
                     public void accept(CardDto card) {
@@ -60,7 +60,7 @@ public class CardRepositoryImpl implements CardRepository {
                 .map(new Function<CardDto, List<CardInfoItemModel>>() {
             @Override
             public List<CardInfoItemModel> apply(CardDto cardDto) throws Throwable {
-                return mainConverterK.convert(cardDto);
+                return mainConverter.convert(cardDto);
             }
         });
     }
