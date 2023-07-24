@@ -24,7 +24,7 @@ class MainConverter @Inject constructor() {
             val mainCardInfoBrand: MainCardInfo = MainCardInfo("Brand:", card.brand)
             listCardInfo.add(mainCardInfoBrand)
         }
-        val mainCardInfoPrepaid: MainCardInfo = MainCardInfo("Prepaid:", booleanToString(card.isPrepaid, "Yes", "No"))
+        val mainCardInfoPrepaid: MainCardInfo = MainCardInfo("Prepaid:", booleanToString(card.prepaid, "Yes", "No"))
         listCardInfo.add(mainCardInfoPrepaid)
         if (infoRealValue(card.country.currency)) {
             val mainCardInfoBrand: MainCardInfo = MainCardInfo("Currency:", card.country.currency)
@@ -54,12 +54,12 @@ class MainConverter @Inject constructor() {
 
     private fun numberInfo(number: NumberDto): String? {
         var numberCardInfo: String? = null
-        if (number.length != null && number.isLuhn != null) {
-            numberCardInfo = "Length: " + number.length + "\n" + "Luhn: " + booleanToString(number.isLuhn, "Yes", "No")
+        if (number.length != null && number.luhn != null) {
+            numberCardInfo = "Length: " + number.length + "\n" + "Luhn: " + booleanToString(number.luhn, "Yes", "No")
         } else if (number.length != null) {
             numberCardInfo = "Length: " + number.length;
-        } else if (number.isLuhn != null) {
-            numberCardInfo = "Luhn: " + booleanToString(number.isLuhn, "Yes", "No")
+        } else if (number.luhn != null) {
+            numberCardInfo = "Luhn: " + booleanToString(number.luhn, "Yes", "No")
         }
         return numberCardInfo;
     }
