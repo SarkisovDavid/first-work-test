@@ -2,6 +2,8 @@ package com.example.test.presentation;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -57,6 +59,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         viewModel = new ViewModelProvider(this, multiViewModelFactory).get(MainViewModel.class);
+        viewModel.getErrorCardMutableLiveData().observe(this, new Observer<Throwable>() {
+            @Override
+            public void onChanged(Throwable throwable) {
+                Toast.makeText(MainActivity.this, R.string.no_correct_bin, Toast.LENGTH_SHORT).show();
+            }
+        });
         viewModel.getCardMutableLiveData().observe(this, new Observer<List<CardInfoItemModel>>() {
             @Override
             public void onChanged(List<CardInfoItemModel> cardInfoItemModels) {

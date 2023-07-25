@@ -1,5 +1,8 @@
 package com.example.test.presentation;
 
+import android.widget.Toast;
+
+import com.example.test.R;
 import com.example.test.domain.model.CardInfoItemModel;
 import com.example.test.domain.usecase.GetCardInfo;
 
@@ -22,7 +25,12 @@ public class MainViewModel extends ViewModel {
 
     GetCardInfo getCardInfo;
     private final MutableLiveData<List<CardInfoItemModel>> cardMutableLiveData = new MutableLiveData<>();
+    private final MutableLiveData<Throwable> errorCardMutableLiveData = new MutableLiveData<>();
     private final CompositeDisposable compositeDisposable = new CompositeDisposable();
+
+    public MutableLiveData<Throwable> getErrorCardMutableLiveData() {
+        return errorCardMutableLiveData;
+    }
 
     @Inject
     public MainViewModel(GetCardInfo getCardInfo) {
@@ -41,6 +49,11 @@ public class MainViewModel extends ViewModel {
                     @Override
                     public void accept(List<CardInfoItemModel> cardInfoItemModels) {
                         cardMutableLiveData.setValue(cardInfoItemModels);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Throwable {
+                        errorCardMutableLiveData.setValue(throwable);
                     }
                 });
         compositeDisposable.add(disposable);

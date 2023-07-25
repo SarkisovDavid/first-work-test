@@ -73,10 +73,12 @@ class MainConverter @Inject constructor() {
         return result
     }
 
-    private fun infoRealValue(info: String): Boolean {
+    private fun infoRealValue(info: String?): Boolean {
         var infoIsNotEmpty: Boolean = false
-        if (info.isNotEmpty()) {
-            infoIsNotEmpty = true
+        if (info != null) {
+            if (info.isNotEmpty()) {
+                infoIsNotEmpty = true
+            }
         }
         return infoIsNotEmpty
     }

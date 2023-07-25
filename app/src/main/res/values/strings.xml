@@ -6,4 +6,5 @@
     <string name="scheme_title">Scheme:</string>
     <string name="toast_no_data">Enter data</string>
     <string name="history_menu">History</string>
+    <string name="no_correct_bin">No correct BIN</string>
 </resources>
